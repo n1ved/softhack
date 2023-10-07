@@ -8,9 +8,10 @@ export default function Login()  {
     const handleSubmit = async(e) => {
         e.preventDefault();
         const postData = { username : username, password : password};
+        console.log(postData);
         const response = await fetch('http://127.0.0.1:8000/fintech/login_view', {
             method: 'POST',
-            body : JSON.stringify(postData),
+            body : JSON.stringify({username : username,password:password}),
             mode : 'cors'
         });
         const result = await response.json();
@@ -31,7 +32,7 @@ export default function Login()  {
                 <form className="login-form" method="POST" action="{%url 'login'%}">
 
                     <input type={"text"} className="input-text" name="username" onChange={handleUsernameChange} placeholder="username"/>
-                    <input type={"password"} className="input-text" name="password" placeholder="password"/>
+                    <input type={"password"} className="input-text" name="password" onChange={handlePasswordChange} placeholder="password"/>
                     <input type={"submit"} value={"Sign In"} className="input-submit" onClick={handleSubmit}/>
                 </form>
                 <div className={"sign-up-link"}>Don&apos;t have an account ? <a href={"/register"}>Sign Up</a> Instead</div>
