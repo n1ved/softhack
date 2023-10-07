@@ -19,6 +19,8 @@ export default function Login() {
     if (result.status === "success") {
       console.log("proceed login");
       navigate('/dashboard')
+    }else{
+        alert("wrong password or username")
     }
   };
   const handleUsernameChange = (e) => {
