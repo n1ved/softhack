@@ -6,6 +6,7 @@ import requests as req
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 import json
+from newsscrapper import newsscrapp,sentiment
 
 # Create your views here.
 def index(request):
@@ -37,8 +38,11 @@ def logins(request):
     
 
 
-def ask_model(request):
-    if request.method=="POST":
-        data=request.data
-        string=data.decode('utf-8')
-        x=json.loads(string)
+def get_index(request,id):
+    
+    
+    
+    
+    lst=newsscrapp(id)
+    return JsonResponse({'score':sentiment(lst)})
+
