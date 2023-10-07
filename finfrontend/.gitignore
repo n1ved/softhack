@@ -22,3 +22,7 @@ dist-ssr
 *.sln
 *.sw?
 
+#Remove pyCache
+finbackend/finbackend/__pycache__/
+finbackend/fintech/migrations/__pycache__/
+finbackend/fintech/__pycache__/

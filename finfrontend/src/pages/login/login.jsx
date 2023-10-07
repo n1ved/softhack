@@ -7,8 +7,6 @@ export default function Login()  {
     const [password, setPassword] = useState("");
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const postData = { username : username, password : password};
-        console.log(postData);
         const response = await fetch('http://127.0.0.1:8000/fintech/login_view', {
             method: 'POST',
             body : JSON.stringify({username : username,password:password}),
@@ -16,6 +14,10 @@ export default function Login()  {
         });
         const result = await response.json();
         console.log(result);
+        if(result.status === "success"){
+            console.log("proceed login");
+            this.props.history.push("/dashboard");
+        }
     }
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);
