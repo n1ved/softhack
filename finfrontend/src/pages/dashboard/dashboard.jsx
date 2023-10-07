@@ -1,5 +1,6 @@
 import ChatBubble from "./chat_bubble.jsx";
 import "./dashboard.css";
+import Content from "./Content.jsx";
 export default function Dashboard() {
   return (
     <div className="dashboard-container text-[black] flex h-screen box-border">
@@ -10,7 +11,9 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-      <div className="flex-1 w-1/4">content</div>
+      <div className="flex-1 w-1/4 flex ml-20">
+        <Content />
+      </div>
       <div className="flex-none flex flex-col-reverse w-96 fixed right-0 bg-slate-500 rounded-md h-[680px] m-3 box-border ">
         <input
           type="text"
