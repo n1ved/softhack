@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html , body{
+  margin : 0;
+}
+* {
+  font-family: "Quicksand", sans-serif;
+  color: white;
+}
+
+
+@media screen and (min-width: 480px) {
+  .card:nth-child(7n + 1) {
+    grid-column: auto/span 2;
+    grid-row: auto/span 2;
+  }
+}

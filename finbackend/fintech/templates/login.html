@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <link rel="stylesheet" href="../static/login.css">
+    <script crossorigin  src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin  src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script crossorigin  src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <div id="root"></div>
+    <script type="text/babel">
+        const root = document.getElementById('root')
+        const Login = () => {
+            return (
+                <div className="login-container">
+                    <div className="login-salutation">
+                        Welcome to <span>Lorem</span>
+                    </div>
+                    <div className="form-container">
+                        <div className={"sign-in-title"}>Sign in to Lorem</div>
+                        <form className="login-form" method="POST" action="{%url 'login'%}">
+                            
+                            <input type={"text"} className="input-text" name="username"/>
+                            <input type={"password"} className="input-text" name="password"/>
+                            <input type={"submit"} value={"Sign In"} className="input-submit"/>
+                        </form>
+                        <div className={"sign-up-link"}>Don&apos;t have an account ? <a href={"{% url 'register'%}"}>Sign Up</a> Instead</div>
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<Login/> ,root)
+    </script>
+</body>
+</html>

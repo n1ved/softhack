@@ -1,0 +1,49 @@
+.main {
+  background-image: url("../../assets/hero--bg.png");
+}
+
+.holder-img {
+  width: 50rem;
+  height: 30rem;
+  transition: transform 0.3s ease;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.holder-img:hover {
+  transform: scale(1.1);
+}
+
+@keyframes slideFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.hero-text {
+  opacity: 0;
+  animation: slideFromLeft 0.5s ease-in-out forwards;
+}
+
+@media (max-width: 1000px) {
+  .home-container {
+    overflow: hidden;
+  }
+
+  .holder-img {
+    visibility: hidden;
+  }
+}
