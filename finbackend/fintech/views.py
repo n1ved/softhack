@@ -26,11 +26,19 @@ def logins(request):
 
         if user is not None:
             login(request,user)
-            return HttpResponse("succesful")
+            return JsonResponse({'status':"success"})
         
         else:
-            return HttpResponse("fail")
+            return JsonResponse({'status':"fail"})
 
 
     if request.method=="GET":
         return HttpResponse("none")
+    
+
+
+def ask_model(request):
+    if request.method=="POST":
+        data=request.data
+        string=data.decode('utf-8')
+        x=json.loads(string)
