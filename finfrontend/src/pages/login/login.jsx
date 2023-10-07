@@ -7,8 +7,10 @@ export default function Login()  {
     const [password, setPassword] = useState("");
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const response = await fetch('http://127.0.0.1:8000/fintech', {
-            method: 'GET',
+        const postData = { username : username, password : password};
+        const response = await fetch('http://127.0.0.1:8000/fintech/login_view', {
+            method: 'POST',
+            body : JSON.stringify(postData),
             mode : 'cors'
         });
         const result = await response.json();
