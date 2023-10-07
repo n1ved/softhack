@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 export default function Content() {
-  const [score, setScore] = useState();
+  const [score, setScore] = useState({});
   const [company, setCompany] = useState("");
   useEffect(() => {
     console.log(score);
@@ -55,7 +55,7 @@ export default function Content() {
           />
         </div>
       </form>
-      <div className="mt-6">{score.score.toFixed(3)}</div>
+      <div className="mt-6">{score.score}</div>
     </div>
   );
 }
