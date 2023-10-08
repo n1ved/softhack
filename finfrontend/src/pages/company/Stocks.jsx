@@ -5,25 +5,24 @@ export default function Stocks() {
   const [stockPrice, setStockPrice] = useState("");
   const { companyName } = useParams();
   const [symbol, setSymbol] = useState("");
+
   useEffect(() => {
     const fetchSymbol = async () => {
       try {
-        const alphaVantageApiKey = "EVA9NSFOWNZUWMJ7";
-        const searchResponse = await fetch(
-          `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${companyName}&apikey=${alphaVantageApiKey}`
+        const apiKey = "ckh8fp1r01qtga4ak1vgckh8fp1r01qtga4ak200";
+        const response = await fetch(
+          `https://finnhub.io/api/v1/search?q=${companyName}&token=${apiKey}`
         );
 
-        if (searchResponse.ok) {
-          const searchData = await searchResponse.json();
-          if (searchData.bestMatches && searchData.bestMatches.length > 0) {
-            setSymbol(searchData.bestMatches[0]["1. symbol"]);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.result && data.result.length > 0) {
+            setSymbol(data.result[0].symbol);
           } else {
             console.error("Symbol not found for the given company name");
           }
         } else {
-          console.error(
-            `Failed to fetch symbol. Status: ${searchResponse.status}`
-          );
+          console.error(`Failed to fetch symbol. Status: ${response.status}`);
         }
       } catch (error) {
         console.error("An error occurred while fetching symbol:", error);
