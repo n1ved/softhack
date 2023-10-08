@@ -16,7 +16,7 @@ export default function Register()  {
         if (!validatePassword()) {
             return;
         }
-        const response = await fetch("http://3.27.250.15:8000/fintech/register", {
+        const response = await fetch("https://3.27.250.15:8000/fintech/register", {
             method: "POST",
             body: JSON.stringify({ username: username, password: password ,email : email , confirmation : confirmPassword}),
             mode: "cors",

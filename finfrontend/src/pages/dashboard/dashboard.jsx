@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 export default function Dashboard() {
 const [trackedList, setTrackedList] = useState([]);
   useEffect(() => {
-    fetch("http://3.27.250.15:8000/fintech/tracklist")
+    fetch("https://3.27.250.15:8000/fintech/tracklist")
         .then((response) => response.json())
         .then((data) => setTrackedList(data));
     console.log(trackedList);

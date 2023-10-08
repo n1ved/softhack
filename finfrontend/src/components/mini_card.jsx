@@ -7,7 +7,7 @@ export default function MiniCard({imgurl , name }){
         navigate(url);
     }
     const handleUntrack = async (e)  =>{
-            const response = await fetch(`http://3.27.250.15:8000/fintech/untrack/${company}`, {
+            const response = await fetch(`https://3.27.250.15:8000/fintech/untrack/${company}`, {
                 method: "GET",
             });
             console.log(response);
