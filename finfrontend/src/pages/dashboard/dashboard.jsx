@@ -1,6 +1,7 @@
 import ChatBubble from "./chat_bubble.jsx";
 import "./dashboard.css";
 import Content from "./Content.jsx";
+import MiniCard from "../../components/mini_card.jsx"
 export default function Dashboard() {
   return (
     <div className="dashboard-container text-[black] flex h-screen box-border bg-[#1D232A]">
@@ -12,7 +13,15 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="flex-1 w-1/4 flex ml-20">
-        <Content />
+        <div className="flex flex-col">
+            <Content />
+            <h2 className="self-start px-10 py-4 text-xl">Tracked stocks</h2>
+            <div className="card-container flex flex-row mx-8">
+                <MiniCard name={"Apple Inc"} imgurl={"https://logo.uplead.com/apple.com"} noimage={false}/>
+                <MiniCard name={"Google LLC"} imgurl={"https://logo.uplead.com/google.com"} noimage={false}/>
+                <MiniCard name={"Amazon "} imgurl={"https://logo.uplead.com/amazon.com"} noimage={false}/>
+            </div>
+        </div>
       </div>
       <div className="flex-none flex flex-col-reverse w-96 fixed right-0 bg-slate-500 rounded-md h-screen m-3 box-border ">
         <input
