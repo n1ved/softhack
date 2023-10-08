@@ -4,6 +4,7 @@ export default function Content() {
   const navigate = useNavigate();
   const [badge, setBadge] = useState("hidden");
   const [visbility , setVisibility] = useState("hidden");
+  const [loader , setLoader] = useState("hidden");
   const [score, setScore] = useState({});
   const [company, setCompany] = useState("");
   useEffect(() => {
@@ -11,6 +12,7 @@ export default function Content() {
   }, [score]);
 
   const handleSubmit = async (e) => {
+    handleLoader();
     e.preventDefault();
     if (!company.trim()) {
       return;
@@ -31,6 +33,7 @@ export default function Content() {
         setScore(data);
         setBadge("badge badge-accent");
         setVisibility("mt-6 mx-8");
+        setLoader("hidden");
       } else {
         console.error(`Failed to fetch data. Status: ${response.status}`);
       }
@@ -45,6 +48,9 @@ export default function Content() {
   const handleButtonClick = (e) => {
     const url = '/company/'+company;
     navigate(url);
+  }
+  const handleLoader = (e) =>{
+      setLoader("mx-5 loading loading-dots loading-sm");
   }
   return (
     <div className="flex flex-col">
@@ -63,8 +69,10 @@ export default function Content() {
             onClick={handleSubmit}
             disabled={!company.trim()}
           />
+          <span className={loader}></span>
         </div>
       </form>
+
       <div className={visbility}>
         <div className="card w-fit bg-base-300 shadow-md p-0 mx-5">
           <div className="card-body">
