@@ -8,8 +8,6 @@ export default function Company() {
   const { companyName } = useParams();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    // Your fetch logic here
-    // For example, assuming an asynchronous function fetchData is defined
     const fetchData = async () => {
       try {
         const response = await fetch(
@@ -36,7 +34,6 @@ export default function Company() {
       }
     };
 
-    // Call the fetchData function whenever the component mounts or the company changes
     fetchData();
   }, [companyName]);
   return (
@@ -59,6 +56,7 @@ export default function Company() {
         <Sentiments score={score} loading={loading}/>
         <Stocks />
       </div>
+      
     </div>
   );
 }

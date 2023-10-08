@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 export default function Content() {
   const navigate = useNavigate();
   const [badge, setBadge] = useState("hidden");
-  const [visbility , setVisibility] = useState("hidden");
-  const [loader , setLoader] = useState("hidden");
+  const [visbility, setVisibility] = useState("hidden");
+  const [loader, setLoader] = useState("hidden");
   const [score, setScore] = useState({});
   const [company, setCompany] = useState("");
   useEffect(() => {
@@ -46,12 +46,12 @@ export default function Content() {
     setCompany(e.target.value);
   };
   const handleButtonClick = (e) => {
-    const url = '/company/'+company;
+    const url = "/company/" + company;
     navigate(url);
-  }
-  const handleLoader = (e) =>{
-      setLoader("mx-5 loading loading-dots loading-sm");
-  }
+  };
+  const handleLoader = (e) => {
+    setLoader("mx-5 loading loading-dots loading-sm");
+  };
   return (
     <div className="flex flex-col">
       <form method="GET">
@@ -59,7 +59,7 @@ export default function Content() {
           <input
             type="text"
             placeholder="Enter company name"
-            className="rounded-lg  ml-10 mr-2 w-full px-5 py-2"
+            className="rounded-lg  ml-12 mr-2  px-5 pr-20 py-2"
             onChange={handleChange}
           />
           <input
@@ -79,7 +79,9 @@ export default function Content() {
             <h2 className="card-title">
               {company}
               <div className={badge}>{(score.score * 100).toFixed(2)}</div>
-              <button className="ml-4 btn" onClick={handleButtonClick}>&rarr;</button>
+              <button className="ml-4 btn" onClick={handleButtonClick}>
+                &rarr;
+              </button>
             </h2>
           </div>
         </div>
