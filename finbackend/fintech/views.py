@@ -7,7 +7,8 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 import json
 from newsscrapper import newsscrapp,sentiment
-
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 # Create your views here.
 def index(request):
     return JsonResponse({'hi':'hello'})
@@ -48,3 +49,8 @@ def get_index(request,id):
 def return_news_json(request,id):
     lst=newsscrapp(id)
     return JsonResponse({'news':lst})
+
+
+@api_view(['GET'])
+def current_user(requests):
+    return Response({'user':requests.user.username})
