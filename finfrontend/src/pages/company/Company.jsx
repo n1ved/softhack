@@ -3,6 +3,7 @@ import Sentiments from "./Sentiments";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Stocks from "./Stocks";
+import News from "./news.jsx";
 export default function Company() {
   const [score, setScore] = useState("");
   const { companyName } = useParams();
@@ -85,6 +86,7 @@ export default function Company() {
         <Sentiments score={score} loading={loading} />
         <Stocks />
       </div>
+      <News companyName={companyName}/>
     </div>
   );
 }
