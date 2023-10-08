@@ -9,6 +9,8 @@ import json
 from newsscrapper import newsscrapp,sentiment
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from . models import *
+from django.db import IntegrityError
 # Create your views here.
 def index(request):
     return JsonResponse({'hi':'hello'})
@@ -54,3 +56,27 @@ def return_news_json(request,id):
 @api_view(['GET'])
 def current_user(requests):
     return Response({'user':requests.user.username})
+
+def register(request):
+    if request.method == "POST":
+
+
+            username = request.POST["username"]
+            email = request.POST["email"]
+
+            # Ensure password matches confirmation
+            password = request.POST["password"]
+            confirmation = request.POST["confirmation"]
+            if password != confirmation:
+                return JsonResponse({"status":"p & c no match"})
+
+            # Attempt to create new user
+            try:
+                user = User.objects.create_user(username, email, password)
+                user.save()
+                
+            except IntegrityError:
+                return JsonResponse({"status":"user_already_exists"})
+            login(request, user)
+            return JsonResponse({"status":"success"})
+    
