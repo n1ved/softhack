@@ -9,6 +9,7 @@ import json
 from newsscrapper import newsscrapp,sentiment
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
 from . models import *
 from django.db import IntegrityError
 # Create your views here.

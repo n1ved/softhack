@@ -10,4 +10,6 @@ class User(AbstractUser):
 class Company(models.Model):
     company_name = models.CharField(max_length=28, blank=True)
 
+    def __str__(self):
+        return self.company_name
     
