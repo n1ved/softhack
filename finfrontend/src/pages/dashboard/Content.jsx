@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import MiniCard from "../../components/mini_card.jsx";
 export default function Content() {
   const [score, setScore] = useState({});
   const [company, setCompany] = useState("");
@@ -55,7 +56,9 @@ export default function Content() {
           />
         </div>
       </form>
-      <div className="mt-6">{score.score}</div>
+      <div className="mt-6 mx-8">
+        <MiniCard name={company} noimage={true} score={score.score}/>
+      </div>
     </div>
   );
 }
