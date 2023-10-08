@@ -61,14 +61,15 @@ def current_user(requests):
 @csrf_exempt
 def register(request):
     if request.method == "POST":
-
-
-            username = request.POST["username"]
-            email = request.POST["email"]
+            data=request.body
+            string=data.decode("utf-8")
+            x=json.loads(string)
+            username = x["username"]
+            email = x["email"]
 
             # Ensure password matches confirmation
-            password = request.POST["password"]
-            confirmation = request.POST["confirmation"]
+            password = x["password"]
+            confirmation = x["confirmation"]
             if password != confirmation:
                 return JsonResponse({"status":"p & c no match"})
 
