@@ -13,7 +13,7 @@ export default function Company() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://127.0.0.1:8000/fintech/score/${companyName}`,
+          `http://13.211.197.74:8000/fintech/score/${companyName}`,
           {
             method: "GET",
             headers: {
