@@ -6,6 +6,12 @@ export default function MiniCard({imgurl , name }){
         const url = '/company/'+name;
         navigate(url);
     }
+    const handleUntrack = async (e)  =>{
+            const response = await fetch(`http://3.27.250.15:8000/fintech/untrack/${company}`, {
+                method: "GET",
+            });
+            console.log(response);
+    }
     return(
         <div className="card w-fit bg-base-300 shadow-md p-0 mx-5">
             <div className="card-body">
@@ -17,7 +23,7 @@ export default function MiniCard({imgurl , name }){
                         </div>
                     </div>
                     {name}
-                    <button className="ml-4 btn btn-primary">{"Untrack"}</button>
+                    <button className="ml-4 btn btn-primary" onClick={handleUntrack}>{"Untrack"}</button>
                     <button className="ml-4 btn" onClick={handleButtonClick}>&rarr;</button>
                 </h2>
             </div>
