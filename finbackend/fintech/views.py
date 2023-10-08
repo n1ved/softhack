@@ -80,3 +80,21 @@ def register(request):
             login(request, user)
             return JsonResponse({"status":"success"})
     
+
+def track(requests,id):
+    company=Company.objects.get(name=id)
+    user=User.objects.get(id=requests.user.id)
+    user.track.add(company)
+    return JsonResponse({"status successfull"})
+
+def untrack(requests,id):
+    company=Company.objects.get(name=id)
+    user=User.objects.get(id=requests.user.id)
+    user.track.remove(company)
+    return JsonResponse({"status successfull"})
+
+
+def tracklist(request):
+    user=User.objects.get(id=request.user.id)
+    comapylist=[x for x in user.track.all()]
+    return JsonResponse({"tracked":comapylist})
