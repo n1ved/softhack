@@ -9,5 +9,8 @@ urlpatterns=[
     path('login_view',views.logins,name="login"),
     path('score/<str:id>',views.get_index),
     path('news/<str:id>',views.return_news_json),
-    path("user",views.current_user)
+    path("user",views.current_user),
+    path("track/<str:id>",views.track),
+    path("untrack/<str:id>",views.track),
+    path("tracklist",views.tracklist)
 ]
