@@ -26,3 +26,4 @@ dist-ssr
 finbackend/finbackend/__pycache__/
 finbackend/fintech/migrations/__pycache__/
 finbackend/fintech/__pycache__/
+finbackend/__pycache__/
