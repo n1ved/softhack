@@ -12,6 +12,7 @@ from rest_framework.response import Response
 
 from . models import *
 from django.db import IntegrityError
+
 # Create your views here.
 def index(request):
     return JsonResponse({'hi':'hello'})
@@ -80,4 +81,20 @@ def register(request):
                 return JsonResponse({"status":"user_already_exists"})
             login(request, user)
             return JsonResponse({"status":"success"})
-    
+def track(requests,id):
+    company=Company.objects.get(name=id)
+    user=User.objects.get(id=requests.user.id)
+    user.track.add(company)
+    return JsonResponse({"status successfull"})
+
+def untrack(requests,id):
+    company=Company.objects.get(name=id)
+    user=User.objects.get(id=requests.user.id)
+    user.track.remove(company)
+    return JsonResponse({"status successfull"})
+
+
+def tracklist(request):
+    user=User.objects.get(id=request.user.id)
+    comapylist=[x for x in user.track.all()]
+    return JsonResponse({"tracked":comapylist})
