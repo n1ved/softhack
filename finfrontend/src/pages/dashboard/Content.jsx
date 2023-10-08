@@ -19,7 +19,7 @@ export default function Content() {
     }
     try {
       const response = await fetch(
-        `http://13.211.197.74:8000/fintech/score/${company}`,
+        `http://3.27.250.15:8000/fintech/score/${company}`,
         {
           method: "GET",
           headers: {
@@ -42,6 +42,12 @@ export default function Content() {
     }
   };
 
+  const handleNewTrack = async (e) => {
+    const response = await fetch(`http://3.27.250.15:8000/fintech/track/${company}`, {
+        method: "GET",
+    });
+    console.log(response);
+  };
   const handleChange = (e) => {
     setCompany(e.target.value);
   };
@@ -79,7 +85,7 @@ export default function Content() {
             <h2 className="card-title">
               {company}
               <div className={badge}>{(score.score * 100).toFixed(2)}</div>
-              <button className="ml-4 btn btn-primary"> Track </button>
+              <button className="ml-4 btn btn-primary" onClick={handleNewTrack}> Track </button>
               <button className="ml-4 btn" onClick={handleButtonClick}>
                 &rarr;
               </button>

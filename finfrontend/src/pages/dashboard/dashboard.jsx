@@ -1,8 +1,16 @@
-import ChatBubble from "./chat_bubble.jsx";
 import "./dashboard.css";
 import Content from "./Content.jsx";
 import MiniCard from "../../components/mini_card.jsx";
+import {useEffect, useState} from "react";
 export default function Dashboard() {
+const [trackedList, setTrackedList] = useState([]);
+  useEffect(() => {
+    fetch("http://3.27.250.15:8000/fintech/tracklist")
+        .then((response) => response.json())
+        .then((data) => setTrackedList(data));
+    console.log(trackedList);
+  }, []);
+
   return (
     <div className="dashboard-container text-[black] flex h-screen box-border bg-[#1D232A]">
       <div className="box-border flex-none w-20 rounded-md bg-slate-500 m-3 fixed h-screen">
@@ -41,18 +49,6 @@ export default function Dashboard() {
               title="ARKK Holdings Data by Finnhub Stock API"
             ></iframe>
           </div>
-        </div>
-      </div>
-      <div className="flex-none flex flex-col-reverse w-96 fixed right-0 bg-slate-500 rounded-md h-screen m-3 box-border ">
-        <input
-          type="text"
-          className="chat-input input m-8"
-          placeholder="chat"
-        />
-        <div className="flex flex-col chat-container  min-w-96 px-7 box-border">
-          <ChatBubble sent={false} message="hi" />
-          <ChatBubble sent={true} message="hello" />
-          <ChatBubble sent={true} message="what u doing" />
         </div>
       </div>
     </div>
