@@ -27,7 +27,7 @@ export default function MiniCard({imgurl , name , noimage , score=null}){
                     </div>
                     {name}
                     <div className={scorevisibility}>{score}</div>
-                    <button className="ml-4 btn">></button>
+                    <button className="ml-4 btn"></button>
 
                 </h2>
             </div>
