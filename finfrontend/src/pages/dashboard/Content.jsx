@@ -79,6 +79,7 @@ export default function Content() {
             <h2 className="card-title">
               {company}
               <div className={badge}>{(score.score * 100).toFixed(2)}</div>
+              <button className="ml-4 btn btn-primary"> Track </button>
               <button className="ml-4 btn" onClick={handleButtonClick}>
                 &rarr;
               </button>
