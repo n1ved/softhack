@@ -11,6 +11,7 @@ def newsscrapp(name):
     for link in trav.find_all('a'):
         if(str(type(link.string)) == "<class 'bs4.element.NavigableString'>" and link.string != " " and len(link.string)> 30):
             a.append(link.string)
+    print(a)
     return a
 
 

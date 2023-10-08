@@ -37,12 +37,14 @@ def logins(request):
         return HttpResponse("none")
     
 
-
+#Returns the score of the company as a float
 def get_index(request,id):
-    
-    
-    
-    
     lst=newsscrapp(id)
     return JsonResponse({'score':sentiment(lst)})
 
+
+
+# Returns news as a list of strings.
+def return_news_json(request,id):
+    lst=newsscrapp(id)
+    return JsonResponse({'news':lst})
