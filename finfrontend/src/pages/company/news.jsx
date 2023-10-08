@@ -5,7 +5,7 @@ export default function News({companyName}){
     const [newsArticles, setNewsArticles] = useState([]);
 
     useEffect(() => {
-        fetch(`http://13.211.197.74:8000/fintech/news/${companyName}`)
+        fetch(`https://13.211.197.74:8000/fintech/news/${companyName}`)
             .then((response) => response.json())
             .then((data) => setNewsArticles(data.news));
     }, []);

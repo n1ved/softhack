@@ -17,6 +17,7 @@ export default function MiniCard({imgurl , name }){
                         </div>
                     </div>
                     {name}
+                    <button className="ml-4 btn btn-primary">{"Untrack"}</button>
                     <button className="ml-4 btn" onClick={handleButtonClick}>&rarr;</button>
                 </h2>
             </div>
