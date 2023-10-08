@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
-import MiniCard from "../../components/mini_card.jsx";
+import { useNavigate } from 'react-router-dom'
 export default function Content() {
+  const navigate = useNavigate();
+  const [badge, setBadge] = useState("hidden");
+  const [visbility , setVisibility] = useState("hidden");
   const [score, setScore] = useState({});
   const [company, setCompany] = useState("");
   useEffect(() => {
@@ -26,6 +29,8 @@ export default function Content() {
       if (response.ok) {
         const data = await response.json();
         setScore(data);
+        setBadge("badge badge-accent");
+        setVisibility("mt-6 mx-8");
       } else {
         console.error(`Failed to fetch data. Status: ${response.status}`);
       }
@@ -37,6 +42,10 @@ export default function Content() {
   const handleChange = (e) => {
     setCompany(e.target.value);
   };
+  const handleButtonClick = (e) => {
+    const url = '/company/'+company;
+    navigate(url);
+  }
   return (
     <div className="flex flex-col">
       <form method="GET">
@@ -56,8 +65,16 @@ export default function Content() {
           />
         </div>
       </form>
-      <div className="mt-6 mx-8">
-        <MiniCard name={company} noimage={true} score={score.score}/>
+      <div className={visbility}>
+        <div className="card w-fit bg-base-300 shadow-md p-0 mx-5">
+          <div className="card-body">
+            <h2 className="card-title">
+              {company}
+              <div className={badge}>{(score.score * 100).toFixed(2)}</div>
+              <button className="ml-4 btn" onClick={handleButtonClick}>&rarr;</button>
+            </h2>
+          </div>
+        </div>
       </div>
     </div>
   );
