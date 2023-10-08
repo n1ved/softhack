@@ -58,7 +58,7 @@ def return_news_json(request,id):
 @api_view(['GET'])
 def current_user(requests):
     return Response({'user':requests.user.username})
-
+@csrf_exempt
 def register(request):
     if request.method == "POST":
 
