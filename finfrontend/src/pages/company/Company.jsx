@@ -47,7 +47,7 @@ export default function Company() {
           </div>
           <figure className="rounded-lg">
             <img
-              src="https://picsum.photos/200/300"
+              src={`https://logo.clearbit.com/${companyName}`}
               alt="company"
               className="w-2/3 h-56"
             />
